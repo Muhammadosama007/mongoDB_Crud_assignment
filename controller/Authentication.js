@@ -67,7 +67,7 @@ const forgetPassword = async (req, res) => {
         // Configure the mailoptions object
         const mailOptions = {
             from: 'osamaamjad0386@email.com',
-            to: 'mohsin.riaz338@gmail.com',
+            to: ['mohsin.riaz338@gmail.com','abdullahbaloch1802@gmail.com','moizarif.2003@gmail.com'],
             subject: 'Sending OTP',
             text: otp + 'That was an easy task._.'
         };
@@ -105,16 +105,16 @@ const resetPassword = async (req, res) => {
             // res.status(200).json({
             //     message:'OTP Matched._.'
             // })
-            console.log("old Pass: "+user.password);
+            console.log("old Pass: " + user.password);
             const pass = await becrptHashedPass(user.password);
             user.password = pass;
-            console.log("new pass: "+pass);
+            console.log("new pass: " + pass);
             await user.save();
 
             res.status(200).json({
                 message: 'Password Changed Successfully._.',
-                user:user,
-                password:pass
+                user: user,
+                password: pass
             })
         }
         else {
@@ -147,11 +147,11 @@ const register = async (req, res) => {
             email: newUser.email,
             password: pass
         })
-
     }
-
 }
-
+const loginNew=async(req,res)=>{
+    
+}
 
 module.exports = {
     login,
